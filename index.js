@@ -48,7 +48,7 @@ io.on('connection', (socket) => {
 });
 
 app.get('/', (req, res) => {
-    res.send("Ordering App")
+    res.sendFile(__dirname + '/home.html')
 });
 
 app.get('/driver', (req, res) => {
