@@ -7,6 +7,7 @@ class Order {
         this.price = price;
         this.sender = sender;
         this.driver = null;
+        this.in_ride = false;
     }
 
     assignDriver(driver) {

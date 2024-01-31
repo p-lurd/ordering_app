@@ -24,10 +24,12 @@ io.on('connection', (socket) => {
 
 
    socket.on('requestOrder', (order) => {
-        console.log('Requesting order', order);
-        orderingApp.requestOrder(order);
+        // console.log('Requesting order', order);
+       const requestedOrder =  orderingApp.requestOrder(order);
+    //    orderingApp.expireOrder(requestedOrder);
+        // console.log('request', requestedOrder)
         setTimeout(() => {
-            orderingApp.expireOrder(order);
+            orderingApp.expireOrder(requestedOrder);
         }, 60000);
     });
 
@@ -37,6 +39,11 @@ io.on('connection', (socket) => {
 
     socket.on('rejectOrder', (order) => {
         orderingApp.rejectOrder(order);
+    });
+
+    // to end the order 
+    socket.on('finishRide', (finishedOrder) => {
+        orderingApp.finishRide(finishedOrder);
     });
 });
 
